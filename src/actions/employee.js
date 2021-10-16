@@ -58,7 +58,8 @@ export const create_employee =
     console.log(body);
 
     axios
-      .post('http://127.0.0.1:8000/api/v1/employees/', body, tokenConfig(getState))
+      // .post('http://127.0.0.1:8000/api/v1/employees/', body, tokenConfig(getState))
+      .post(`${process.env.REACT_APP_API_URL}employees/`, body, tokenConfig(getState))
       .then((res) => {
         console.log(res);
         dispatch({
@@ -88,7 +89,8 @@ export const get_employees = () => (dispatch, getState) => {
   dispatch({ type: GET_EMPLOYEE_LOADING });
 
   axios
-    .get('http://127.0.0.1:8000/api/v1/employees/', tokenConfig(getState))
+    // .get('http://127.0.0.1:8000/api/v1/employees/', tokenConfig(getState))
+    .get(`${process.env.REACT_APP_API_URL}employees/`, tokenConfig(getState))
     .then((res) => {
       console.log(res.data);
       dispatch({
