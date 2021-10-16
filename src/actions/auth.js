@@ -18,7 +18,7 @@ import {
 export const loadUser = () => (dispatch, getState) => {
   axios
     // .get('http://127.0.0.1:8000/api/v1/auth/user', tokenConfig(getState))
-    .get(`${process.env.REACT_APP_API_URL}api/v1/auth/user`, tokenConfig(getState))
+    .get('https://police-database-api.herokuapp.com/api/v1/auth/user', tokenConfig(getState))
     .then((res) => {
       // console.log(res.data);
       dispatch({
@@ -51,7 +51,7 @@ export const login = (username, password, uniqueID) => (dispatch) => {
 
   axios
     // .post('http://127.0.0.1:8000/api/v1/auth/login', body, config)
-    .post(`${process.env.REACT_APP_API_URL}api/v1/auth/login`, body, config)
+    .post('https://police-database-api.herokuapp.com/api/v1/auth/login', body, config)
     .then((res) => {
       console.log(res);
       if (res.data.status === 3000) {
@@ -91,7 +91,11 @@ export const change_password = (old_password, new_password, uniqueID) => (dispat
 
   axios
     // .put('http://127.0.0.1:8000/api/v1/change-password/', body, tokenConfig(getState))
-    .put(`${process.env.REACT_APP_API_URL}api/v1/change-password/`, body, tokenConfig(getState))
+    .put(
+      'https://police-database-api.herokuapp.com/api/v1/change-password/',
+      body,
+      tokenConfig(getState)
+    )
     .then((res) => {
       console.log(res);
       if (res.data.status === 4000) {
@@ -125,7 +129,11 @@ export const logout = () => (dispatch, getState) => {
   console.log('logging out ...');
   axios
     // .post('http://127.0.0.1:8000/api/v1/auth/logout', null, tokenConfig(getState))
-    .post(`${process.env.REACT_APP_API_URL}api/v1/auth/logout`, null, tokenConfig(getState))
+    .post(
+      'https://police-database-api.herokuapp.com/api/v1/auth/logout',
+      null,
+      tokenConfig(getState)
+    )
     .then((res) => {
       console.log(res.data);
       dispatch({
