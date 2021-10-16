@@ -1,7 +1,4 @@
-## Minimal [(Free version)](https://police-database-ui.herokuapp.com/)
-                                 |
-
-## License
+## HRIMS (https://police-database-ui.herokuapp.com/)
 
 This is a private repository for the Human Resource Information Management System for UG Police.
 
