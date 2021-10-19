@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { useRef, useState } from 'react';
 // material
 import { alpha } from '@mui/material/styles';

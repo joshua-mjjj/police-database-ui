@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { GET_ERRORS, CLEAR_ERRORS } from './types';
 
 // RETURN ERRORS

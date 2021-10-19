@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { combineReducers } from 'redux';
 
 import auth from './auth';

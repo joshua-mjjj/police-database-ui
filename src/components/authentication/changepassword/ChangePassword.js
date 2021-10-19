@@ -10,6 +10,7 @@ import eyeOffFill from '@iconify/icons-eva/eye-off-fill';
 import Alert from '@material-ui/lab/Alert';
 import Collapse from '@material-ui/core/Collapse';
 import CloseIcon from '@material-ui/icons/Close';
+import Box from '@mui/material/Box';
 
 // material
 import {
@@ -53,9 +54,9 @@ function ChangePassword(props) {
     validationSchema: LoginSchema,
     onSubmit: () => {
       console.log('changin user password...');
-      console.log(values.id);
-      console.log(values.oldpassword);
-      console.log(values.newpassword);
+      // console.log(values.id);
+      // console.log(values.oldpassword);
+      // console.log(values.newpassword);
       props.change_password(values.oldpassword, values.newpassword, values.id);
       // window.location.href = '/dashboard';
     }
@@ -179,7 +180,7 @@ function ChangePassword(props) {
     }
   }
 
-  if (props.errors.msg !== null && props.errors.msg.message_page === 'employees_create') {
+  if (props.errors.msg !== null && props.errors.message_page === 'change_password') {
     if (props.errors.msg.old_password[0] === 'Wrong password.') {
       console.log(props.errors.msg.old_password);
       alert = (
@@ -304,6 +305,9 @@ function ChangePassword(props) {
           }}
         >
           Change password
+          {props.auth.looading_change_password === true ? (
+            <Box component="img" src="/static/loading.gif" sx={{ width: 100, height: 100 }} />
+          ) : null}
         </LoadingButton>
       </Form>
     </FormikProvider>

@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import faker from 'faker';
 import { sample } from 'lodash';
 // utils

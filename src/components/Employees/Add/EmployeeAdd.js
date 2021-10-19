@@ -442,6 +442,8 @@ function EmployeeAdd(props) {
                 <MenuItem value="absent">Absent</MenuItem>
                 <MenuItem value="dead">Dead</MenuItem>
                 <MenuItem value="transferred">Transferred</MenuItem>
+                <MenuItem value="suspended">Suspended</MenuItem>
+                <MenuItem value="dismissed">Dismissed</MenuItem>
               </Select>
             </FormControl>
 
@@ -456,6 +458,8 @@ function EmployeeAdd(props) {
               >
                 <MenuItem value="pass_leave">Pass leave</MenuItem>
                 <MenuItem value="annual_leave">Annnual leave</MenuItem>
+                <MenuItem value="maternity_leave">Maternity leave</MenuItem>
+                <MenuItem value="not_on_leave">None</MenuItem>
               </Select>
             </FormControl>
           </Stack>

@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { useFormik } from 'formik';
 import { useState } from 'react';
 // material
@@ -47,7 +48,7 @@ export default function AddEmployee() {
   };
 
   return (
-    <Page title="Dashboard: Products | Minimal-UI">
+    <Page title="UIPPU | VIS | HRIMS">
       <Container>
         <Typography variant="h4" sx={{ mb: 5 }}>
           Add an employee

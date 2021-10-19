@@ -15,6 +15,7 @@ import {
   Button,
   Checkbox,
   TableRow,
+  Grid,
   TableBody,
   TableCell,
   Container,
@@ -24,7 +25,7 @@ import {
 } from '@mui/material';
 // components
 import Page from '../components/Page';
-import Label from '../components/Label';
+// import Label from '../components/Label';
 import Scrollbar from '../components/Scrollbar';
 import SearchNotFound from '../components/SearchNotFound';
 import { UserListHead, UserListToolbar, UserMoreMenu } from '../components/_dashboard/user';
@@ -32,6 +33,8 @@ import { UserListHead, UserListToolbar, UserMoreMenu } from '../components/_dash
 import USERLIST from '../_mocks_/user';
 import { mockImgAvatar } from '../utils/mockImages';
 import { get_employees } from '../actions/employee';
+
+import { AppWeeklySales } from '../components/_dashboard/app';
 
 // ----------------------------------------------------------------------
 
@@ -155,6 +158,7 @@ function User(props) {
 
   React.useEffect(() => {
     props.get_employees();
+    console.log('calling');
   }, []);
 
   React.useEffect(() => {
@@ -171,23 +175,30 @@ function User(props) {
   // const filteredUsers = applySortFilter(employees_list, getComparator(order, orderBy), filterName);
   const filteredUsers = employees_list;
 
-  const isUserNotFound = filteredUsers.length === 0;
+  // const isUserNotFound = filteredUsers.length === 0;
 
   return (
-    <Page title="HRIMS | Employees">
+    <Page title="UIPPU | VIS | HRIMS">
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
-          <Typography variant="h4" gutterBottom>
-            Employees
+          <Typography style={{ marginRight: 10 }} variant="h4" gutterBottom>
+            Employees:{' '}
           </Typography>
-          <Button
+          {props.employees.employees_data !== null ? (
+            <Grid container spacing={3}>
+              <Grid item xs={12} sm={6} md={3}>
+                <AppWeeklySales total={props.employees.employees_data.length} />
+              </Grid>
+            </Grid>
+          ) : null}
+          {/* <Button
             variant="contained"
             component={RouterLink}
             to="/dashboard/employee_add"
             startIcon={<Icon icon={plusFill} />}
           >
             New Employee
-          </Button>
+          </Button> */}
         </Stack>
 
         <Card>
@@ -199,13 +210,17 @@ function User(props) {
           />
 
           <Scrollbar>
-            <TableContainer sx={{ width: 2500, minheight: 1500 }}>
+            <TableContainer sx={{ width: 3000, minheight: 1500 }}>
               <Table>
                 <UserListHead
-                  order={order}
-                  orderBy={orderBy}
+                  // order={order}
+                  // orderBy={orderBy}
                   headLabel={TABLE_HEAD}
-                  rowCount={USERLIST.length}
+                  rowCount={
+                    props.employees.employees_data !== null
+                      ? props.employees.employees_data.length
+                      : 0
+                  }
                   numSelected={selected.length}
                   onRequestSort={handleRequestSort}
                   onSelectAllClick={handleSelectAllClick}
@@ -273,7 +288,44 @@ function User(props) {
                             <TableCell align="left">{title}</TableCell>
                             <TableCell align="left">{department}</TableCell>
                             {/* <TableCell align="left">{status ? 'Yes' : 'No'}</TableCell> */}
-                            <TableCell align="left">
+                            {status === 'active' ? (
+                              <TableCell align="left">
+                                <span style={{ color: 'green', fontWeight: 'bold' }}>Active</span>
+                              </TableCell>
+                            ) : null}
+                            {status === 'transferred' ? (
+                              <TableCell align="left">
+                                <span style={{ color: 'green', fontWeight: 'bold' }}>
+                                  Transferred
+                                </span>
+                              </TableCell>
+                            ) : null}
+                            {status === 'sick' ? (
+                              <TableCell align="left">
+                                <span style={{ color: 'orange', fontWeight: 'bold' }}>Sick</span>
+                              </TableCell>
+                            ) : null}
+                            {status === 'absent' ? (
+                              <TableCell align="left">
+                                <span style={{ color: 'red', fontWeight: 'bold' }}>Absent</span>
+                              </TableCell>
+                            ) : null}
+                            {status === 'dead' ? (
+                              <TableCell align="left">
+                                <span style={{ color: 'orange', fontWeight: 'bold' }}>Dead</span>
+                              </TableCell>
+                            ) : null}
+                            {status === 'suspension' ? (
+                              <TableCell align="left">
+                                <span style={{ color: 'red', fontWeight: 'bold' }}>Suspension</span>
+                              </TableCell>
+                            ) : null}
+                            {status === 'dismissed' ? (
+                              <TableCell align="left">
+                                <span style={{ color: 'red', fontWeight: 'bold' }}>Dismissed</span>
+                              </TableCell>
+                            ) : null}
+                            {/* <TableCell align="left">
                               <Label
                                 variant="ghost"
                                 color={
@@ -281,7 +333,9 @@ function User(props) {
                                   (status === 'transferred' && 'success') ||
                                   (status === 'sick' && 'error') ||
                                   (status === 'absent' && 'error') ||
-                                  (status === 'dead' && 'error')
+                                  (status === 'dead' && 'error') ||
+                                  (status === 'suspension' && 'error') ||
+                                  (status === 'dismissed' && 'error')
                                 }
                                 // ('active', 'Active'),
                                 // ('sick', 'Sick'),
@@ -291,20 +345,27 @@ function User(props) {
                               >
                                 {sentenceCase(status)}
                               </Label>
-                            </TableCell>
-                            <TableCell align="left">
-                              <Label
-                                variant="ghost"
-                                color={
-                                  (on_leave === 'pass_leave' && 'success') ||
-                                  (on_leave === 'annual_leave' && 'success')
-                                }
-                                // ('pass_leave', 'Pass leave'),
-                                // ('annual_leave', 'Annual leave'),
-                              >
-                                {sentenceCase(on_leave)}
-                              </Label>
-                            </TableCell>
+                            </TableCell> */}
+                            {on_leave === 'annual_leave' ? (
+                              <TableCell align="left">
+                                <span style={{ color: 'black' }}>Annual Leave</span>
+                              </TableCell>
+                            ) : null}
+                            {on_leave === 'pass_leave' ? (
+                              <TableCell align="left">
+                                <span style={{ color: 'green' }}>Pass Leave</span>
+                              </TableCell>
+                            ) : null}
+                            {on_leave === 'maternity_leave' ? (
+                              <TableCell align="left">
+                                <span style={{ color: 'orange' }}>Maternity Leave</span>
+                              </TableCell>
+                            ) : null}
+                            {on_leave === 'not_on_leave' ? (
+                              <TableCell align="left">
+                                <span style={{ color: 'grey' }}>Not on leave</span>
+                              </TableCell>
+                            ) : null}
                             <TableCell align="left">{date_of_establishment}</TableCell>
                             <TableCell align="left">{file_number}</TableCell>
 
@@ -315,16 +376,14 @@ function User(props) {
                         );
                       })
                       .reverse()}
-                    {emptyRows > 0 && (
+                    {/* {emptyRows > 0 && (
                       <TableRow style={{ height: 53 * emptyRows }}>
                         <TableCell colSpan={6} />
                       </TableRow>
-                    )}
+                    )} */}
                   </TableBody>
-                ) : (
-                  <div>No employees yet</div>
-                )}
-                {isUserNotFound && (
+                ) : null}
+                {/* {isUserNotFound && (
                   <TableBody>
                     <TableRow>
                       <TableCell align="center" colSpan={6} sx={{ py: 3 }}>
@@ -332,21 +391,21 @@ function User(props) {
                       </TableCell>
                     </TableRow>
                   </TableBody>
-                )}
+                )} */}
               </Table>
             </TableContainer>
           </Scrollbar>
-          {props.employees.employees_data !== null ? (
+          {/* {props.employees.employees_data !== null ? (
             <TablePagination
               rowsPerPageOptions={[5, 10, 25]}
               component="div"
-              count={props.employees.employees_data.length}
+              count={employees_list.length}
               rowsPerPage={rowsPerPage}
               page={page}
               onPageChange={handleChangePage}
               onRowsPerPageChange={handleChangeRowsPerPage}
             />
-          ) : null}
+          ) : null} */}
         </Card>
       </Container>
     </Page>

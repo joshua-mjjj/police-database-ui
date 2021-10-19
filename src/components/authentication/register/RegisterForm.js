@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import * as Yup from 'yup';
 import { useState } from 'react';
 import { Icon } from '@iconify/react';

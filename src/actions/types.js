@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 // auth
 export const LOADING = 'LOADING';
 export const USER_LOADED = 'USER_LOADED';

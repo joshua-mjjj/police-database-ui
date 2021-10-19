@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import faker from 'faker';
 import PropTypes from 'prop-types';
 import { noCase } from 'change-case';

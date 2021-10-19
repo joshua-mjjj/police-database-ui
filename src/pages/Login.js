@@ -42,7 +42,7 @@ const ContentStyle = styled('div')(({ theme }) => ({
 export default function Login() {
   return (
     <div>
-      <RootStyle title="Login | HRMIS">
+      <RootStyle title="UIPPU | VIS | HRIMS">
         <AuthLayout>
           Please make sure you are authorized to &nbsp;
           <Link underline="none" variant="subtitle2" component={RouterLink} to="/login">

@@ -21,7 +21,7 @@ import {
 
 export default function DashboardApp() {
   return (
-    <Page title="Dashboard | HRIMS">
+    <Page title="UIPPU | VIS | HRIMS">
       <Container maxWidth="xl">
         <Box sx={{ pb: 5 }}>
           <Typography variant="h4">Hi, Welcome back</Typography>

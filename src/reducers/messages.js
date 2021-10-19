@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import { CREATE_MESSAGES, CLEAR_MESSAGES } from '../actions/types';
 
 const initialState = {

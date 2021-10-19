@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import axios from 'axios';
 import { returnError } from './errors';
 import { createMessage } from './messages';
@@ -107,6 +108,7 @@ export const change_password = (old_password, new_password, uniqueID) => (dispat
             'change_password'
           )
         );
+        dispatch({ type: CHANGE_PASSWORD_FAIL });
       } else {
         dispatch({
           type: CHANGE_PASSWORD_SUCCESS,

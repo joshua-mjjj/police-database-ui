@@ -1,6 +1,6 @@
+/* eslint-disable camelcase */
 import { CREATE_MESSAGES, CLEAR_MESSAGES } from './types';
 
-/* eslint-disable camelcase */
 // CREATE MESSAGE
 export const createMessage = (msg, type_, page) => ({
   type: CREATE_MESSAGES,

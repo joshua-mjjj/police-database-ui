@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import axios from 'axios';
 import { returnError } from './errors';
 import { createMessage } from './messages';
@@ -11,7 +12,6 @@ import {
   GET_EMPLOYEE_LOADING
 } from './types';
 
-/* eslint-disable camelcase */
 // CREATE EMPLOYEE
 export const create_employee =
   (
@@ -103,7 +103,6 @@ export const get_employees = () => (dispatch, getState) => {
       });
     })
     .catch((err) => {
-      dispatch(returnError(err.response.data, err.response.status, 'employees_list'));
       dispatch({
         type: GET_EMPLOYEE_FAIL
       });

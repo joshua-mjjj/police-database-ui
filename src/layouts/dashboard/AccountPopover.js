@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React, { useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import { Icon } from '@iconify/react';
