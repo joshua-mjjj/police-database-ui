@@ -52,8 +52,11 @@ export default function Login() {
 
         <MHidden width="mdDown">
           <SectionStyle>
-            <Typography variant="h6" sx={{ px: 5, mt: 10, mb: 5 }}>
-              UIPPU | VIS HUMAN RESOURCE MANAGEMENT INFORMATION SYSTEM
+            <Typography variant="h6" sx={{ px: 5, mt: 10 }}>
+              VIPPU | VIS
+            </Typography>
+            <Typography variant="h6" sx={{ px: 5, mb: 5 }}>
+              HUMAN RESOURCE MANAGEMENT INFORMATION SYSTEM
             </Typography>
             <Stack sx={{ mb: 10, ml: 13 }}>
               {' '}
