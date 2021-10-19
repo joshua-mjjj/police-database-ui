@@ -285,8 +285,61 @@ function User(props) {
                             <TableCell align="left">{date_of_posting}</TableCell>
                             <TableCell align="left">{computer_number}</TableCell>
                             <TableCell align="left">{rank}</TableCell>
-                            <TableCell align="left">{title}</TableCell>
-                            <TableCell align="left">{department}</TableCell>
+                            {title === 'commander' ? (
+                              <TableCell align="left">
+                                <span>Commander</span>
+                              </TableCell>
+                            ) : null}
+                            {title === 'deputy_commander' ? (
+                              <TableCell align="left">
+                                <span>Deputy Commander</span>
+                              </TableCell>
+                            ) : null}
+                            {title === 'staff_officer' ? (
+                              <TableCell align="left">
+                                <span>Staff Officer</span>
+                              </TableCell>
+                            ) : null}
+                            {title === 'armoury' ? (
+                              <TableCell align="left">
+                                <span>Armoury</span>
+                              </TableCell>
+                            ) : null}
+                            {title === 'head_operations' ? (
+                              <TableCell align="left">
+                                <span>Head Operations</span>
+                              </TableCell>
+                            ) : null}
+                            {department === 'un_agencies' ? (
+                              <TableCell align="left">
+                                <span>UN Agencies</span>
+                              </TableCell>
+                            ) : null}
+                            {department === 'embassy_high' ? (
+                              <TableCell align="left">
+                                <span>Embassy / High</span>
+                              </TableCell>
+                            ) : null}
+                            {department === 'jlot' ? (
+                              <TableCell align="left">
+                                <span>JLOT</span>
+                              </TableCell>
+                            ) : null}
+                            {department === 'body_gaurd' ? (
+                              <TableCell align="left">
+                                <span>Body Guard</span>
+                              </TableCell>
+                            ) : null}
+                            {department === 'authorities' ? (
+                              <TableCell align="left">
+                                <span>Authorities</span>
+                              </TableCell>
+                            ) : null}
+                            {department === 'ministries' ? (
+                              <TableCell align="left">
+                                <span>Ministries</span>
+                              </TableCell>
+                            ) : null}
                             {/* <TableCell align="left">{status ? 'Yes' : 'No'}</TableCell> */}
                             {status === 'active' ? (
                               <TableCell align="left">

@@ -64,11 +64,6 @@ function EmployeeAdd(props) {
       .max(100, 'Too Long!')
       .required('Computer number required'),
     rank: Yup.string().min(2, 'Too Short!').max(100, 'Too Long!').required('Rank is required'),
-    title: Yup.string().min(2, 'Too Short!').max(100, 'Too Long!').required('Title is required'),
-    department: Yup.string()
-      .min(2, 'Too Short!')
-      .max(100, 'Too Long!')
-      .required('Department is required'),
     file_number: Yup.string()
       .min(2, 'Too Short!')
       .max(100, 'Too Long!')
@@ -83,6 +78,8 @@ function EmployeeAdd(props) {
   const [valueDOEsta, setValueDOEsta] = React.useState(currentdate);
   const [status, setStatus] = React.useState(null);
   const [onleave, setLeave] = React.useState(null);
+  const [department, setDepartment] = React.useState(null);
+  const [title, setTitle] = React.useState(null);
 
   const formik = useFormik({
     initialValues: {
@@ -93,8 +90,6 @@ function EmployeeAdd(props) {
       place_of_work: '',
       computer_number: '',
       rank: '',
-      title: '',
-      department: '',
       file_number: ''
     },
     validationSchema: RegisterSchema,
@@ -107,8 +102,8 @@ function EmployeeAdd(props) {
         values.place_of_work,
         values.computer_number,
         values.rank,
-        values.title,
-        values.department,
+        title,
+        department,
         values.file_number,
         value,
         valueDOP,
@@ -339,6 +334,16 @@ function EmployeeAdd(props) {
     console.log(newValue.target.value);
   };
 
+  const handleChangeDepartment = (newValue) => {
+    setDepartment(newValue.target.value);
+    console.log(newValue.target.value);
+  };
+
+  const handleChangetitle = (newValue) => {
+    setTitle(newValue.target.value);
+    console.log(newValue.target.value);
+  };
+
   return (
     <FormikProvider value={formik}>
       <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
@@ -403,13 +408,30 @@ function EmployeeAdd(props) {
               helperText={touched.rank && errors.rank}
             />
 
-            <TextField
+            <FormControl fullWidth>
+              <InputLabel id="demo-simple-select-label">Title</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={title}
+                label="title"
+                onChange={handleChangetitle}
+              >
+                <MenuItem value="commander">Commander</MenuItem>
+                <MenuItem value="deputy_commander">Deputy Commander</MenuItem>
+                <MenuItem value="staff_officer">Staff Officer</MenuItem>
+                <MenuItem value="armoury">Armoury</MenuItem>
+                <MenuItem value="head_operations">Head Operations</MenuItem>
+              </Select>
+            </FormControl>
+
+            {/* <TextField
               fullWidth
               label="Title"
               {...getFieldProps('title')}
               error={Boolean(touched.title && errors.title)}
               helperText={touched.title && errors.title}
-            />
+            /> */}
           </Stack>
           <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
             <TextField
@@ -419,13 +441,32 @@ function EmployeeAdd(props) {
               error={Boolean(touched.computer_number && errors.computer_number)}
               helperText={touched.computer_number && errors.computer_number}
             />
-            <TextField
+
+            <FormControl fullWidth>
+              <InputLabel id="demo-simple-select-label">Department</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={department}
+                label="department"
+                onChange={handleChangeDepartment}
+              >
+                <MenuItem value="un_agencies">UN Agencies</MenuItem>
+                <MenuItem value="embassy_high">Embassy High</MenuItem>
+                <MenuItem value="jlot">JLOT</MenuItem>
+                <MenuItem value="body_gaurd">Body Guard</MenuItem>
+                <MenuItem value="authorities">Authorities</MenuItem>
+                <MenuItem value="ministries">Ministries</MenuItem>
+              </Select>
+            </FormControl>
+
+            {/* <TextField
               fullWidth
               label="Department"
               {...getFieldProps('department')}
               error={Boolean(touched.department && errors.department)}
               helperText={touched.department && errors.department}
-            />
+            /> */}
           </Stack>
           <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2}>
             <FormControl fullWidth>

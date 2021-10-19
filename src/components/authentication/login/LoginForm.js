@@ -21,6 +21,7 @@ import {
 import { LoadingButton } from '@mui/lab';
 
 import { login } from '../../../actions/auth';
+import { get_employees } from '../../../actions/employee';
 
 // ----------------------------------------------------------------------
 
@@ -56,6 +57,8 @@ function LoginForm(props) {
 
   if (props.auth.isAuthenticated === true) {
     console.log('Authenticated: ', props.auth.isAuthenticated);
+    props.get_employees();
+    props.get_employees();
     window.location.href = '/dashboard';
   }
 
@@ -175,4 +178,4 @@ const mapStateToProps = (state) => ({
   errors: state.errors
 });
 
-export default connect(mapStateToProps, { login })(LoginForm);
+export default connect(mapStateToProps, { login, get_employees })(LoginForm);

@@ -25,11 +25,11 @@ const routes = (isAuthenticated) => [
         <DashboardLayout />
       ),
     children: [
-      { element: <Navigate to="/dashboard/employees" replace /> },
+      { element: <Navigate to="/dashboard/employee_add" replace /> },
+      { path: 'employee_add', element: <AddEmployee /> },
       // { path: 'app', element: <DashboardApp /> },
       { path: 'employees', element: <User /> },
       { path: 'profile', element: <Profile /> },
-      { path: 'employee_add', element: <AddEmployee /> },
       { path: 'blog', element: <Blog /> }
     ]
   },

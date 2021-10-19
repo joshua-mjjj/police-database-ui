@@ -19,15 +19,15 @@ const sidebarConfig = [
   //   icon: getIcon(pieChart2Fill)
   // },
   {
-    title: 'employees',
-    path: '/dashboard/employees',
-    icon: getIcon(peopleFill)
-  },
-  {
     title: 'Add employee',
     path: '/dashboard/employee_add',
     // path: '/',
     icon: getIcon(personAddFill)
+  },
+  {
+    title: 'employees',
+    path: '/dashboard/employees',
+    icon: getIcon(peopleFill)
   },
   {
     title: 'Account Profile',
